@@ -1,0 +1,44 @@
+<div>
+    <form [formGroup]="formLogin" (submit)="send()">
+        <div>
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" id="email" name="email" formControlName="email" placeholder="your-name@gmail.com" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                <div *ngIf="email.errors?.['required']">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="email.errors?.['minlength']">
+                    Introducir correo válido.
+                </div>
+                <div
+                    *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && email.errors?.['emailValidator']">
+                    Escribir correo válido.
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" id="password" name="password" formControlName="password" required minlength="10"
+                class="form-control form-control-sm"
+                [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                <div *ngIf="password.errors?.['required']">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="password.errors?.['minlength']">
+                   Mínimo 10 carácteres
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" class="form-check-input">
+            <label for="acceptTerms" class="form-check-label">Recordar usuario y contraseña</label>
+        </div>
+        <br>
+        <div>
+            <button class="color-boton__validate" [disabled]="formLogin.invalid" (click)="validate()">Submit</button>
+        </div>
+    </form>
+</div>

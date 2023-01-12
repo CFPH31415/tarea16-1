@@ -1,0 +1,9 @@
+.color-boton__validate{
+    background: white;
+    color: red;
+    padding: 20px 50px;
+}
+
+.color-boton__validate:hover{
+    background:teal;
+}
